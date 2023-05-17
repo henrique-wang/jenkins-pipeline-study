@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-        sh 'echo Hello World bugfix'
+        sh 'echo Hello World Pipeline should not be triggered'
         echo "Build number is ${currentBuild.number}"
       }
     }
