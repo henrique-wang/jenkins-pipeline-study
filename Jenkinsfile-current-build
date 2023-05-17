@@ -5,6 +5,7 @@ pipeline {
       steps {
         sh 'echo Hello World bugfix'
         echo "Build number is ${currentBuild.number}"
+        echo "Branch name ${env.BRANCH_NAME}"
       }
     }
   }
