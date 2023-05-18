@@ -1,0 +1,29 @@
+{
+  "name": "jenkins-pipeline-study",
+  "version": "1.0.0",
+  "description": "Simple Nodejs application for Jenkins Pipeline Test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrique-wang/jenkins-pipeline-study.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "Docker",
+    "Jenkins",
+    "Pipeline"
+  ],
+  "author": "Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrique-wang/jenkins-pipeline-study/issues"
+  },
+  "homepage": "https://github.com/henrique-wang/jenkins-pipeline-study#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
