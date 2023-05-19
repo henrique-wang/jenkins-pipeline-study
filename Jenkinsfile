@@ -41,10 +41,7 @@ pipeline {
             steps {
                 echo "Docker image name: ${DOCKER_NAME}"
                 echo "Docker image tag: ${GIT_COMMIT}"
-            }
-            node {
-                docker.withTool(dockerTool)
-                def customImage = docker.build("${DOCKER_NAME}:${GIT_COMMIT}")
+                sh "docker build -t ${DOCKER_NAME}:${GIT_COMMIT} ."
             }
         }
     }
