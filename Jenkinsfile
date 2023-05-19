@@ -3,9 +3,6 @@ pipeline {
     tools {
         nodejs "NodeJS-14.18"
     }
-    environment {
-        TEST_RESULT = false
-    }
     stages {
         stage('Build') {
             steps {
@@ -30,7 +27,7 @@ pipeline {
                     ]
                 }
                 success {
-                    TEST_RESULT = true
+                    echo 'SUCCESS'
                 }
             }
         }
