@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "Testing project"
                 sh 'npm test -- --coverage'
-            },
+            }
             post {
                 always {
                     publishHTML target: [
