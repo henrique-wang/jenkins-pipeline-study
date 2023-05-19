@@ -34,8 +34,7 @@
     ],
     "coverageReporters": [
       "text",
-      "html",
-      "cobertura"
+      "html"
     ],
     "coverageThreshold": {
       "global": {
