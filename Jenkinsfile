@@ -4,6 +4,9 @@ pipeline {
     tools {nodejs "NodeJS-14.18"}
     
     stages {
+        stage ('Starting') {
+            def testResult = false;
+        }
         stage('Build') {
             steps {
                 echo "Building project from branch ${env.BRANCH_NAME}"
@@ -26,12 +29,23 @@ pipeline {
                         reportName           : 'Test Report'
                     ]
                 }
+                success {
+                    testResult = true
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                testResult = true
+            }
+            steps {
+                echo 'Deploy'
             }
         }
     }
-  post {
-    always {
-        echo currentBuild.currentResult
+    post {
+        always {
+            echo currentBuild.currentResult
+        }
     }
-  }
 }
