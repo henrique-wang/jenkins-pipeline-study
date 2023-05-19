@@ -32,6 +32,10 @@
     "collectCoverageFrom": [
       "./src/**"
     ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
     "coverageThreshold": {
       "global": {
         "lines": 90

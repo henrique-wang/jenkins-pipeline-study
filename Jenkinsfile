@@ -25,6 +25,7 @@ pipeline {
                         reportFiles          : 'index.html',
                         reportName           : 'Test Report'
                     ]
+                    step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/clover.xml'])
                 }
             }
         }
