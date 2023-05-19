@@ -1,8 +1,8 @@
 pipeline {
     agent any
-
-    tools {nodejs "NodeJS-14.18"}
-    
+    tools {
+        nodejs "NodeJS-14.18"
+    }
     stages {
         stage('Build') {
             steps {
@@ -26,12 +26,20 @@ pipeline {
                         reportName           : 'Test Report'
                     ]
                 }
+                success {
+                    echo 'SUCCESS'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy'
             }
         }
     }
-  post {
-    always {
-        echo currentBuild.currentResult
+    post {
+        always {
+            echo currentBuild.currentResult
+        }
     }
-  }
 }
