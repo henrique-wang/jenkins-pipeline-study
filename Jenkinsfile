@@ -4,6 +4,10 @@ pipeline {
         nodejs "NodeJS-14.18"
         dockerTool "Docker-20.10.22"
     }
+    environmnet {
+        // get git commit from Jenkins
+        GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+    }
     stages {
         stage('Build') {
             steps {
@@ -34,7 +38,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                def GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                 echo "Commit: ${GIT_COMMIT}"
             }
         }
