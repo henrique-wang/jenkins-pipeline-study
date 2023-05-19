@@ -7,11 +7,12 @@ pipeline {
     environment {
         // get git commit from Jenkins
         GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+        DOCKER_NAME = "${JOB_BASE_NAME}/${env.BRANCH_NAME}"
     }
     stages {
         stage('Build') {
             steps {
-                echo "Building project from branch ${env.BRANCH_NAME}"
+                echo "Building project from branch ${env.BRANCH_NAME} - Commit ${GIT_COMMIT}"
                 sh 'npm install'
             }
         }
@@ -38,7 +39,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo "Commit: ${GIT_COMMIT}"
+                echo "Docker image name: ${DOCKER_NAME}"
+                echo "Docker image tag: ${GIT_COMMIT}"
+                sh "docker build -t ${DOCKER_NAME}:${GIT_COMMIT} ."
             }
         }
     }
