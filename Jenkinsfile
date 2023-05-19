@@ -5,7 +5,9 @@ pipeline {
     
     stages {
         stage ('Starting') {
-            def testResult = false;
+            steps {
+                TEST_RESULT = false;
+            }
         }
         stage('Build') {
             steps {
@@ -30,13 +32,13 @@ pipeline {
                     ]
                 }
                 success {
-                    testResult = true
+                    TEST_RESULT = true
                 }
             }
         }
         stage('Deploy') {
             when {
-                testResult = true
+                TEST_RESULT = true
             }
             steps {
                 echo 'Deploy'
