@@ -4,7 +4,7 @@ pipeline {
         nodejs "NodeJS-14.18"
         dockerTool "Docker-20.10.22"
     }
-    environmnet {
+    environment {
         // get git commit from Jenkins
         GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
     }
