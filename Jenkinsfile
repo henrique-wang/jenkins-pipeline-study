@@ -13,7 +13,19 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing project"
-                sh 'npm test'
+                sh 'npm test -- --coverage'
+            }
+            post {
+                always {
+                    publishHTML target: [
+                        allowMissing         : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll             : true,
+                        reportDir            : 'output/coverage/jest',
+                        reportFiles          : 'index.html',
+                        reportName           : 'Test Report'
+                    ]
+                }
             }
         }
     }
