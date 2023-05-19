@@ -1,14 +1,12 @@
 pipeline {
     agent any
-
-    tools {nodejs "NodeJS-14.18"}
-    
+    tools {
+        nodejs "NodeJS-14.18"
+    }
+    environment {
+        TEST_RESULT = false
+    }
     stages {
-        stage ('Starting') {
-            steps {
-                TEST_RESULT = false;
-            }
-        }
         stage('Build') {
             steps {
                 echo "Building project from branch ${env.BRANCH_NAME}"
@@ -37,9 +35,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                TEST_RESULT = true
-            }
             steps {
                 echo 'Deploy'
             }
