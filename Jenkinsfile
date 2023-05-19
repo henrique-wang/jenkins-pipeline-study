@@ -21,11 +21,11 @@ pipeline {
                         allowMissing         : false,
                         alwaysLinkToLastBuild: false,
                         keepAll             : true,
-                        reportDir            : 'output/coverage/jest/lcov-report',
+                        reportDir            : 'output/coverage/jest',
                         reportFiles          : 'index.html',
                         reportName           : 'Test Report'
                     ]
-                    step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/clover.xml'])
+                    step([$class: 'CoberturaPublisher', coberturaReportFile: 'output/coverage/jest/cobertura-coverage.xml'])
                 }
             }
         }
