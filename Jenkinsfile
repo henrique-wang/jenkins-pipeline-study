@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         nodejs "NodeJS-14.18"
+        docker "Docker-20.10.22"
     }
     stages {
         stage('Build') {
@@ -33,7 +34,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploy'
+                def GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+                echo "Commit: ${GIT_COMMIT}"
             }
         }
     }
