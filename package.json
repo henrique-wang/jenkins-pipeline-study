@@ -25,5 +25,17 @@
   "homepage": "https://github.com/henrique-wang/jenkins-pipeline-study#readme",
   "devDependencies": {
     "jest": "^29.5.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "output/coverage/jest",
+    "collectCoverageFrom": [
+      "./src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 90
+      }
+    }
   }
 }
