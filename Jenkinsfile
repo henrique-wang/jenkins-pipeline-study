@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         nodejs "NodeJS-14.18"
-        dockerTool "Docker-20.10.22"
     }
     environment {
         // get git commit from Jenkins
@@ -48,6 +47,12 @@ pipeline {
     post {
         always {
             echo currentBuild.currentResult
+        }
+        success {
+            sendSuccessEmail()
+        }
+        failure {
+            sendFailureEmail(stage: "${currentBuild.previousFailedBuild}")
         }
     }
 }
