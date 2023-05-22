@@ -1,3 +1,5 @@
+@Library('shared-library') _
+
 pipeline {
   agent any
   stages {
@@ -5,6 +7,7 @@ pipeline {
       steps {
         sh 'echo Hello World'
         echo "Build number is ${currentBuild.number}"
+        helloWorld(name: 'Admin tester', dayOfWeek: 'Monday')
       }
     }
   }
