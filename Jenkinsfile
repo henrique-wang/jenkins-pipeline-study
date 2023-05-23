@@ -50,10 +50,10 @@ pipeline {
             echo currentBuild.currentResult
         }
         success {
-            sendEmail.sendSuccessEmail()
+            email.sendSuccessEmail()
         }
         failure {
-            sendEmail.sendFailureEmail(stage:"${currentBuild.previousFailedBuild}")
+            email.sendFailureEmail(stage:"${currentBuild.previousFailedBuild}")
         }
     }
 }
