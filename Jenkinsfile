@@ -41,7 +41,7 @@ pipeline {
             steps {
                 echo "Docker image name: ${DOCKER_NAME}"
                 echo "Docker image tag: ${GIT_COMMIT}"
-                sh "docker build -t ${DOCKER_NAME}:${GIT_COMMIT} ."
+                // sh "docker build -t ${DOCKER_NAME}:${GIT_COMMIT} ."
             }
         }
     }
@@ -53,7 +53,7 @@ pipeline {
             sendSuccessEmail()
         }
         failure {
-            sendFailureEmail(stage: "${currentBuild.previousFailedBuild}")
+            sendFailureEmail(stage:"${currentBuild.previousFailedBuild}")
         }
     }
 }
