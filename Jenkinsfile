@@ -5,6 +5,9 @@ pipeline {
     tools {
         nodejs "NodeJS-14.18"
     }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+    }
     environment {
         // get git commit from Jenkins
         GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
