@@ -1,4 +1,6 @@
 @Library('shared-library@develop') _
+def email = new email()
+
 pipeline {
     agent any
     tools {
