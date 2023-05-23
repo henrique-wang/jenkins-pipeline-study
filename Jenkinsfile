@@ -52,14 +52,12 @@ pipeline {
         }
         success {
             script {
-                def email = new org.foo.EmailHandler()
                 email.sendSuccessEmail()
             }
         }
         failure {
             script {
-                def email = new org.foo.EmailHandler()
-                email.sendFailureEmail(stage:"${currentBuild.previousFailedBuild}")
+                email.sendFailureEmail("${currentBuild.previousFailedBuild}")
             }
         }
     }
