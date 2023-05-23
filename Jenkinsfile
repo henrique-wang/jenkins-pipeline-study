@@ -1,5 +1,4 @@
 @Library('shared-library@develop') _
-def email = new email()
 
 pipeline {
     agent any
@@ -53,11 +52,13 @@ pipeline {
         }
         success {
             script {
+                def email = new org.foo.EmailHandler()
                 email.sendSuccessEmail()
             }
         }
         failure {
             script {
+                def email = new org.foo.EmailHandler()
                 email.sendFailureEmail(stage:"${currentBuild.previousFailedBuild}")
             }
         }
